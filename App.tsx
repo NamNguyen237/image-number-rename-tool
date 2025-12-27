@@ -8,6 +8,9 @@ import { Download, RefreshCw, FileArchive, Loader2 } from 'lucide-react';
 
 export default function App() {
   const [paddingLength, setPaddingLength] = useState<number>(3);
+  const [preserveFileName, setPreserveFileName] = useState<boolean>(false);
+  const [originalFileName, setOriginalFileName] = useState<string>("");
+
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
   const [processedFiles, setProcessedFiles] = useState<ProcessedFile[]>([]);
   const [stats, setStats] = useState<ProcessingStats | null>(null);
@@ -20,6 +23,7 @@ export default function App() {
     setProcessedFiles([]);
     setStats(null);
     setProgress(0);
+    setOriginalFileName(file.name);
 
     try {
       // Simulate a small delay for better UX
@@ -46,7 +50,13 @@ export default function App() {
       const url = URL.createObjectURL(stats.processedZipBlob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `renamed_images_pad${paddingLength}.zip`;
+      
+      if (preserveFileName && originalFileName) {
+        a.download = originalFileName;
+      } else {
+        a.download = `renamed_images_pad${paddingLength}.zip`;
+      }
+      
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -59,6 +69,7 @@ export default function App() {
     setStats(null);
     setProgress(0);
     setError(null);
+    // Note: We don't reset originalFileName or preserveFileName to allow quick retry with same settings
   };
 
   return (
@@ -78,7 +89,9 @@ export default function App() {
           {/* Config Panel */}
           <Configuration 
             paddingLength={paddingLength} 
-            setPaddingLength={setPaddingLength} 
+            setPaddingLength={setPaddingLength}
+            preserveFileName={preserveFileName}
+            setPreserveFileName={setPreserveFileName}
             disabled={isProcessing || stats !== null}
           />
 
