@@ -1,20 +1,10 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# image-number-rename-tool
+Một công cụ Python để đổi tên các tệp hình ảnh đã được đánh số nhưng không có số 00 ở đầu: (1.jpg, 10.jpg, 100.jpg) thành (001.jpg, 010.jpg, 100.jpg)
 
-# Run and deploy your AI Studio app
+Mới cập nhật thêm giao diện web-app dễ dùng tại đây: [https://namnguyen237.github.io/image-number-rename-tool/]
 
-This contains everything you need to run your app locally.
+--------------
 
-View your app in AI Studio: https://ai.studio/apps/drive/1rlaVo6o1oIFMyWKLRSPZ2UiG44mUnwKt
+A Python tool to rename image files that are already numbered but do not have a leading 00:  (1.jpg, 10.jpg, 100.jpg) to (001.jpg, 010.jpg, 100.jpg)
 
-## Run Locally
-
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+A new, user-friendly web-app interface has been added here: [https://namnguyen237.github.io/image-number-rename-tool/]
