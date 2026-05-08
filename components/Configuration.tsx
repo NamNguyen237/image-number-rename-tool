@@ -6,6 +6,8 @@ interface ConfigurationProps {
   setPaddingLength: (val: number) => void;
   preserveFileName: boolean;
   setPreserveFileName: (val: boolean) => void;
+  generateHtmlReader: boolean;
+  setGenerateHtmlReader: (val: boolean) => void;
   disabled: boolean;
 }
 
@@ -14,6 +16,8 @@ const Configuration: React.FC<ConfigurationProps> = ({
   setPaddingLength, 
   preserveFileName, 
   setPreserveFileName, 
+  generateHtmlReader,
+  setGenerateHtmlReader,
   disabled 
 }) => {
   return (
@@ -45,20 +49,39 @@ const Configuration: React.FC<ConfigurationProps> = ({
           </div>
         </div>
 
-        <div className="flex items-center gap-4">
-          <div className="sm:w-48 hidden sm:block"></div>
-          <div className="flex items-center gap-3">
-            <input
-              id="preserve"
-              type="checkbox"
-              checked={preserveFileName}
-              onChange={(e) => setPreserveFileName(e.target.checked)}
-              disabled={disabled}
-              className="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500 disabled:opacity-50 cursor-pointer"
-            />
-            <label htmlFor="preserve" className={`text-sm font-medium ${disabled ? 'text-slate-400' : 'text-slate-700'} cursor-pointer select-none`}>
-              Giữ nguyên tên file Zip gốc
-            </label>
+        <div className="flex flex-col gap-3">
+          <div className="flex items-center gap-4">
+            <div className="sm:w-48 hidden sm:block"></div>
+            <div className="flex items-center gap-3">
+              <input
+                id="preserve"
+                type="checkbox"
+                checked={preserveFileName}
+                onChange={(e) => setPreserveFileName(e.target.checked)}
+                disabled={disabled}
+                className="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500 disabled:opacity-50 cursor-pointer"
+              />
+              <label htmlFor="preserve" className={`text-sm font-medium ${disabled ? 'text-slate-400' : 'text-slate-700'} cursor-pointer select-none`}>
+                Giữ nguyên tên file Zip gốc
+              </label>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-4">
+            <div className="sm:w-48 hidden sm:block"></div>
+            <div className="flex items-center gap-3">
+              <input
+                id="generateReader"
+                type="checkbox"
+                checked={generateHtmlReader}
+                onChange={(e) => setGenerateHtmlReader(e.target.checked)}
+                disabled={disabled}
+                className="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500 disabled:opacity-50 cursor-pointer"
+              />
+              <label htmlFor="generateReader" className={`text-sm font-medium ${disabled ? 'text-slate-400' : 'text-slate-700'} cursor-pointer select-none`}>
+                Tạo HTML đọc truyện (tạo file index.html và .nomedia)
+              </label>
+            </div>
           </div>
         </div>
       </div>

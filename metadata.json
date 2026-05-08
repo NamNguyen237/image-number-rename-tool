@@ -1,5 +1,6 @@
 {
   "name": "Zip Zero-Pad Renamer",
   "description": "A client-side tool to bulk rename numbered images inside a ZIP file with zero-padding, mirroring Python script logic.",
-  "requestFramePermissions": []
+  "requestFramePermissions": [],
+  "majorCapabilities": []
 }

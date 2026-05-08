@@ -9,6 +9,7 @@ import { Download, RefreshCw, FileArchive, Loader2 } from 'lucide-react';
 export default function App() {
   const [paddingLength, setPaddingLength] = useState<number>(3);
   const [preserveFileName, setPreserveFileName] = useState<boolean>(false);
+  const [generateHtmlReader, setGenerateHtmlReader] = useState<boolean>(false);
   const [originalFileName, setOriginalFileName] = useState<string>("");
 
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
@@ -31,7 +32,8 @@ export default function App() {
 
       const [files, finalStats] = await processZipFile(
         file, 
-        paddingLength, 
+        paddingLength,
+        generateHtmlReader,
         (percent) => setProgress(percent)
       );
 
@@ -43,7 +45,7 @@ export default function App() {
     } finally {
       setIsProcessing(false);
     }
-  }, [paddingLength]);
+  }, [paddingLength, generateHtmlReader]);
 
   const handleDownload = () => {
     if (stats?.processedZipBlob) {
@@ -92,6 +94,8 @@ export default function App() {
             setPaddingLength={setPaddingLength}
             preserveFileName={preserveFileName}
             setPreserveFileName={setPreserveFileName}
+            generateHtmlReader={generateHtmlReader}
+            setGenerateHtmlReader={setGenerateHtmlReader}
             disabled={isProcessing || stats !== null}
           />
 

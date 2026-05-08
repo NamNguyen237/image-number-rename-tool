@@ -6,6 +6,7 @@ export default defineConfig({
   plugins: [react()],
   base: './', // Quan trọng: Đặt base là './' để assets tải đúng trên GitHub Pages (thư mục con)
   build: {
-    outDir: 'dist',
+    outDir: 'docs',
+    emptyOutDir: true, // Tự động xóa docs cũ trước khi build mớ
   }
 });
